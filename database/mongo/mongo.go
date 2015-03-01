@@ -29,7 +29,7 @@ func main() {
 		panic (err)
 	}
 
-	result := &Person{}
+	result := Person{}
 
 	//Properties in query must be in lowercase
 	usersCollection.Find(bson.M{"name":"Carla"}).One(&result)
