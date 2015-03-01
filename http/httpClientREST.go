@@ -5,12 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"learningGo/http/user"
 )
-
-type User struct {
-	Name string
-	Email string
-}
 
 func main() {
 	response, err := http.Get("http://localhost:1337")
@@ -25,14 +21,14 @@ func main() {
 		panic(err)
 	}
 
-	var user User
+	var userReceived = user.New()
 
-	err = json.Unmarshal(body, &user)
+	err = json.Unmarshal(body, &userReceived)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println("User received => ", user)
+	fmt.Println("User received => ", userReceived)
 
 
 }

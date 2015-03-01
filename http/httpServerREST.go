@@ -4,12 +4,8 @@ import (
 	"net/http"
 	"encoding/json"
 	"fmt"
+	"learningGo/http/user"
 )
-
-type User struct {
-	Name string
-	Email string
-}
 
 func server(response http.ResponseWriter, request *http.Request) {
 	json, err := getJson()
@@ -26,7 +22,9 @@ func main() {
 }
 
 func getJson() ([]byte, error){
-	user := User{Name:"Jesus", Email:"jjballano@gmail.com"}
+	newUser := user.New()
+	newUser.Name="Jesus"
+	newUser.Email="jjballano@gmail.com"
 
-	return json.MarshalIndent(user, "", "  ")
+	return json.MarshalIndent(newUser, "", "  ")
 }
