@@ -6,10 +6,24 @@ import (
 	"io/ioutil"
 	"net/http"
 	"learningGo/http/user"
+	"bytes"
 )
 
 func main() {
-	response, err := http.Get("http://localhost:1337")
+	
+	buffer := bytes.NewReader([]byte(`{"username":"jjballano", "email": "jjballano@gmail.com"}`))
+	responseSave, err := http.Post("http://localhost:1337/save","application/json",buffer)
+	if err != nil {
+		panic(err)
+	}
+	defer responseSave.Body.Close()
+	bodySave,_ := ioutil.ReadAll(responseSave.Body)
+	fmt.Println("Response => ",string(bodySave))
+
+
+
+
+	response, err := http.Get("http://localhost:1337/find/0")
 	if err != nil {
 		panic(err)
 	}
