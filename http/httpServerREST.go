@@ -30,6 +30,7 @@ func save(response http.ResponseWriter, request *http.Request) {
 	json.Unmarshal(bodySave, &userReceived)
 	users[added] = userReceived
 	added++
+	userReceived.Save()
 
 	jsonValue := map[string]string{"Result":"OK"}
 	result, _ := json.Marshal(jsonValue)
