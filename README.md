@@ -1,6 +1,9 @@
 Learning how to code in Go
 ========
 
+I use this project to try things I don't know yet.
+I'm not going to refactor anything so you could find something wrong here.
+
 
 Testing
 --------
