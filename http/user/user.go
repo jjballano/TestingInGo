@@ -15,5 +15,5 @@ func New()(User) {
 
 func (user *User) Save()(bool){
 	mongo := database.Mongo{}
-	return mongo.Save(user,"any")
+	return mongo.Save(user,"users")
 }

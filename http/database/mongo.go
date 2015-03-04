@@ -1,8 +1,7 @@
 package database
 
 import (
-	//"gopkg.in/mgo.v2"
-	"fmt"
+	"gopkg.in/mgo.v2"
 )
 
 type Mongo struct{}
@@ -12,23 +11,20 @@ type Model interface{
 }
 
 func (mongo *Mongo) Save(obj Model, collectionName string) bool {
-	fmt.Println("LLEGAAAA")
-	return true
-	/*
 	session, err := mgo.Dial("localhost")
 	panicIfError(err)
 
-	defer.session.Close()
+	defer session.Close()
 
 	database := session.DB("golangTests")
 	collection := database.C(collectionName)
-
-
-
+	err = collection.Insert(obj)
+	panicIfError(err)
+	return true
 }
 
-func panicIfError(err Error){
+func panicIfError(err error){
 	if err != nil{
 		panic(err)
-	}*/	
+	}
 }

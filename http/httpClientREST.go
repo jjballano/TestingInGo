@@ -11,6 +11,14 @@ import (
 
 func main() {
 	
+	createUser()
+
+
+	//findUser()
+
+}
+
+func createUser() {
 	buffer := bytes.NewReader([]byte(`{"username":"jjballano", "email": "jjballano@gmail.com"}`))
 	responseSave, err := http.Post("http://localhost:1337/save","application/json",buffer)
 	if err != nil {
@@ -19,10 +27,9 @@ func main() {
 	defer responseSave.Body.Close()
 	bodySave,_ := ioutil.ReadAll(responseSave.Body)
 	fmt.Println("Response => ",string(bodySave))
+}
 
-
-
-
+func findUser() {
 	response, err := http.Get("http://localhost:1337/find/0")
 	if err != nil {
 		panic(err)
@@ -43,6 +50,4 @@ func main() {
 	}
 
 	fmt.Println("User received => ", userReceived)
-
-
 }
