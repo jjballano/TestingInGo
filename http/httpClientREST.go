@@ -1,18 +1,17 @@
-package main 
+package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/jjballano/learningGo/http/user"
 	"io/ioutil"
 	"net/http"
-	"learningGo/http/user"
-	"bytes"
 )
 
 func main() {
-	
-	createUser()
 
+	createUser()
 
 	//findUser()
 
@@ -20,13 +19,13 @@ func main() {
 
 func createUser() {
 	buffer := bytes.NewReader([]byte(`{"username":"jjballano", "email": "jjballano@gmail.com"}`))
-	responseSave, err := http.Post("http://localhost:1337/save","application/json",buffer)
+	responseSave, err := http.Post("http://localhost:1337/save", "application/json", buffer)
 	if err != nil {
 		panic(err)
 	}
 	defer responseSave.Body.Close()
-	bodySave,_ := ioutil.ReadAll(responseSave.Body)
-	fmt.Println("Response => ",string(bodySave))
+	bodySave, _ := ioutil.ReadAll(responseSave.Body)
+	fmt.Println("Response => ", string(bodySave))
 }
 
 func findUser() {

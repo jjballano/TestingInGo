@@ -1,19 +1,19 @@
 package user
 
 import (
-	"learningGo/http/database"
+	"github.com/jjballano/learningGo/http/database"
 )
 
 type User struct {
 	Username string
-	Email string
+	Email    string
 }
 
-func New()(User) {
+func New() User {
 	return User{}
 }
 
-func (user *User) Save()(bool){
+func (user *User) Save() bool {
 	mongo := database.Mongo{}
-	return mongo.Save(user,"users")
+	return mongo.Save(user, "users")
 }
